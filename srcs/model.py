@@ -1,12 +1,15 @@
 class LinearRegression():
 
     def __init__(self, n_weights = 1):
-        self.weights = [.0 for _ in range(n_weights)]
-        self.bias = .0
+        self.weights = [0 for _ in range(n_weights)]
+        self.bias = 0
 
-    def predict(self, input):
+    def load_parameters(self, file):
+        pass
+
+    def predict(self, inputs):
         prediction = self.bias
-        for x, w in zip(input, self.weights):
+        for x, w in zip(inputs, self.weights):
             prediction += x * w
         return prediction
 
