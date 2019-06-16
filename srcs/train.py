@@ -9,10 +9,6 @@ def save(model, output_file):
 def plot(model):
     pass
 
-def loss(model, features, output):
-    error = (model.predict(features) - output) ** 2
-    return error
-
 def train(args):
     model = LinearRegression()
     dataset = Dataset(args.input_file)
@@ -21,12 +17,11 @@ def train(args):
         theta0 = 0
         theta1 = 0
         for features, output in zip(dataset.x, dataset.y):
-            pass
-            # error = loss(model, features, output)
-            # theta0 += error
-            # theta1 += error * features[0]
-        theta0 *= 2 / len(dataset.x)
-        theta1 *= 2 / len(dataset.y)
+            error = model.predict(features) - output
+            theta0 += error
+            theta1 += error * features[0]
+        theta0 /= len(dataset.x)
+        theta1 /= len(dataset.y)
         model.bias += -0.01 * theta0
         model.weights[0] += -0.01 * theta1
     return model
