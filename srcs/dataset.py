@@ -9,12 +9,12 @@ class Dataset:
         self._read_data_from_csv(file, delimiter)
 
     def _read_data_from_csv(self, csv_file, delimiter):
-        self.x, self.y = [], []
+        self.x = []
+        self.y = []
         with open(csv_file) as file:
             reader = csv.reader(file, delimiter=delimiter)
-            x, y = [], []
+            # Skip first row columns
+            next(reader)
             for row in reader:
-                x.append(row[0])
-                y.append(row[1])
-            self.x = x[1:]
-            self.y = y[1:]
+                self.x.append(list(map(float, row[:-1])))
+                self.y.append(float(row[-1]))
