@@ -1,13 +1,22 @@
 from model import LinearRegression
 from dataset import Dataset
 
+import matplotlib.pyplot as plt
 import argparse
 
 def save(model, output_file):
     print (f'Saving to {output_file}:')
 
-def plot(model):
-    pass
+def plot(model, dataset):
+    plt.title('Linear Regression')
+    plt.plot(dataset.y, dataset.x, 'ob')
+    print (model.predict([240000]))
+    # predictions = [model.predict(x) for x in dataset.x]
+    # print (predictions)
+    # plt.plot(predictions, dataset.x)
+    plt.xlabel('km')
+    plt.ylabel('price')
+    plt.show()
 
 def train(args):
     model = LinearRegression()
@@ -22,8 +31,9 @@ def train(args):
             theta1 += error * features[0]
         theta0 /= len(dataset.x)
         theta1 /= len(dataset.y)
-        model.bias += -0.01 * theta0
-        model.weights[0] += -0.01 * theta1
+        model.bias += -0.001 * theta0
+        model.weights[0] += -0.001 * theta1
+    plot(model, dataset)
     return model
 
 def get_arguments():
