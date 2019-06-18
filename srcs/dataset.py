@@ -25,14 +25,7 @@ class Dataset:
             self.y = np.array(self.y)
 
     def _preprocess(self):
-        self._scale()
-        self._normalize()
-
-    # min-max scaling
-    def _scale(self):
+        # min-max scaling
         x_min = np.amin(self.x, 0)
         x_max = np.amax(self.x, 0)
         self.x = (self.x - x_min) * (1 / (x_min - x_max))
-
-    def _normalize(self):
-        pass
