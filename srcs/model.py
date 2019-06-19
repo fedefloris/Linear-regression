@@ -2,11 +2,14 @@ import numpy as np
 
 class LinearRegression():
 
-    def __init__(self, n_weights=1):
+    def __init__(self, n_weights):
         self.weights = np.zeros(n_weights)
         self.bias = 0
 
     def load_parameters(self, file):
+        pass
+
+    def save_parameters(self, file):
         pass
 
     def predict(self, inputs):

@@ -1,14 +1,12 @@
-from model import LinearRegression
 from dataset import Dataset
+from model import LinearRegression
+from optimizer import Optimizer
 
 import matplotlib.pyplot as plt
 import argparse
 import numpy as np
 
 np.set_printoptions(suppress=True)
-
-def save(model, output_file):
-    print (f'Saving to {output_file}:')
 
 def plot(model, dataset):
     plt.title('Linear Regression')
@@ -25,25 +23,24 @@ def loss(model, dataset):
     return error / len(dataset.x)
 
 def train(args):
-    model = LinearRegression()
     dataset = Dataset(args.input_file)
-    print ('Training...')
-    m = len(dataset.x)
-    for _ in range(1500):
-        theta0 = 0
-        theta1 = 0
-        for features, output in zip(dataset.x, dataset.y):
-            error = model.predict(features) - output
-            theta0 += error
-            theta1 += error * features[0]
-        model.bias += -0.3 * theta0 / m
-        model.weights[0] += -0.3 * theta1 / m
+    model = LinearRegression(n_weights=1)
+    optimizer = Optimizer(dataset)
+    for _ in range(args.epochs):
+        optimizer.step(model)
+        print (model)
     plot(model, dataset)
     return model
 
-def get_arguments():
+def get_args():
     parser = argparse.ArgumentParser(
         description='Train a linear regression model for car price prediction.'
+    )
+    parser.add_argument(
+        '-epochs',
+        type=int,
+        default=100,
+        help='Number of epochs'
     )
     parser.add_argument(
         'input_file',
@@ -57,9 +54,9 @@ def get_arguments():
     return parser.parse_args()
 
 def main():
-    arguments = get_arguments()
-    model = train(arguments)
-    save(model, arguments.output_file)
+    args = get_args()
+    model = train(args)
+    model.save_parameters(args.output_file)
 
 if __name__ == '__main__':
     main()
