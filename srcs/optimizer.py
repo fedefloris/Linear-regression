@@ -5,7 +5,7 @@ class Optimizer():
     def __init__(self, dataset):
         self.dataset = dataset
 
-    def step(self, model, learning_rate=1e-1):
+    def step(self, model, learning_rate=3e-1):
         bias = 0
         weights = np.zeros(model.weights.shape)
         m = len(self.dataset.x)
