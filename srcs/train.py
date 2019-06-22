@@ -8,12 +8,19 @@ import numpy as np
 
 np.set_printoptions(suppress=True)
 
-def plot(model, dataset):
-    plt.title('Linear Regression')
-    plt.plot(dataset.y, dataset.x, 'ob')
-    plt.plot(model.predict(dataset.x), dataset.x)
-    plt.xlabel('km')
-    plt.ylabel('price')
+def plot(model, losses, dataset):
+    figure, (ax1, ax2) = plt.subplots(ncols=2, figsize=(10, 5))
+    # ax1.title('Linear Regression')
+    ax1.plot(dataset.y, dataset.x, 'or')
+    ax1.plot(model.predict(dataset.x), dataset.x, label='prediction')
+    # ax1.xlabel('km')
+    # ax1.ylabel('price')
+    # ax1.legend()
+    # ax2.title('Linear Regression')
+    ax2.plot(losses)
+    # ax2.xlabel('error')
+    # ax2.ylabel('epochs')
+    # ax2.legend()
     plt.show()
 
 def loss(model, dataset):
@@ -26,10 +33,12 @@ def train(args):
     dataset = Dataset(args.input_file)
     model = LinearRegression(n_weights=1)
     optimizer = Optimizer(dataset)
+    losses = []
     for _ in range(args.epochs):
         optimizer.step(model)
-        print (model)
-    plot(model, dataset)
+        losses.append(loss(model, dataset))
+    print (model)
+    plot(model, losses, dataset)
     return model
 
 def get_args():
