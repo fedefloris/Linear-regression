@@ -28,7 +28,7 @@ def loss(model, dataset):
     return error.sum() / len(dataset.x)
 
 def train(args):
-    dataset = Dataset(args.input_file)
+    dataset = Dataset(args.dataset)
     model = LinearRegression(n_weights=1)
     optimizer = Optimizer(dataset)
     losses = []
@@ -50,20 +50,20 @@ def get_args():
         help='Number of epochs'
     )
     parser.add_argument(
-        'input_file',
+        'dataset',
         help='CSV file containing car features (including the price)'
     )
     parser.add_argument(
-        '-output_file',
-        default='parameters',
-        help='Output file that will contain the trained parameters of the model'
+        '-model_parameters',
+        default='parameters.npy',
+        help='File that will contain the trained parameters of the model'
     )
     return parser.parse_args()
 
 def main():
     args = get_args()
     model = train(args)
-    model.save_parameters(args.output_file)
+    model.save_parameters(args.model_parameters)
 
 if __name__ == '__main__':
     main()
