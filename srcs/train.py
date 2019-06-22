@@ -24,10 +24,8 @@ def plot(model, losses, dataset):
     plt.show()
 
 def loss(model, dataset):
-    error = 0
-    for features, output in zip(dataset.x, dataset.y):
-        error += (model.predict(features) - output) ** 2
-    return error / len(dataset.x)
+    error = (model.predict(dataset.x) - dataset.y) ** 2
+    return error.sum() / len(dataset.x)
 
 def train(args):
     dataset = Dataset(args.input_file)
