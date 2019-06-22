@@ -7,10 +7,13 @@ class LinearRegression():
         self.bias = 0
 
     def load_parameters(self, file):
-        pass
+        data = np.load(file)
+        if len(data.shape) == 2:
+            self.weights = data[0]
+            self.bias = data[1]
 
     def save_parameters(self, file):
-        pass
+        np.save(file, [self.weights, self.bias])
 
     def predict(self, inputs):
         return self.weights * inputs + self.bias
