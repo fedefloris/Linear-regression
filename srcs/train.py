@@ -33,9 +33,10 @@ def train(args):
     optimizer = Optimizer(dataset)
     losses = []
     for _ in range(args.epochs):
-        optimizer.step(model)
         losses.append(loss(model, dataset))
-    print (model)
+        optimizer.step(model)
+    print ('Model:', model)
+    print ('Loss:', loss(model, dataset))
     plot(model, losses, dataset)
     return model
 
@@ -44,14 +45,14 @@ def get_args():
         description='Train a linear regression model for car price prediction.'
     )
     parser.add_argument(
+        'dataset',
+        help='CSV file containing car features (including the price)'
+    )
+    parser.add_argument(
         '-epochs',
         type=int,
         default=300,
         help='Number of epochs'
-    )
-    parser.add_argument(
-        'dataset',
-        help='CSV file containing car features (including the price)'
     )
     parser.add_argument(
         '-model_parameters',

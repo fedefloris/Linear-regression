@@ -20,7 +20,7 @@ class Dataset:
             next(reader, None)
             for row in reader:
                 self.x.append(list(map(float, row[:-1])))
-                self.y.append(float(row[-1]))
+                self.y.append([float(row[-1])])
             self.x = np.array(self.x)
             self.y = np.array(self.y)
 
