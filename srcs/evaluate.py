@@ -1,18 +1,19 @@
 from dataset import Dataset
 from model import LinearRegression
+from loss import mse, mae, mpe, mape
 
 import matplotlib.pyplot as plt
 import argparse
-
-def plot(model, dataset):
-    pass
 
 def evaluate(args):
     dataset = Dataset(args.dataset)
     model = LinearRegression()
     model.load_parameters(args.model_parameters)
-    print (model)
-    plot(model, dataset)
+    print ('Model:', model)
+    print ('Mean square error:', mse(model, dataset))
+    print ('Mean absolute error:', mae(model, dataset))
+    print ('Mean percentage error: ', mpe(model, dataset))
+    print ('Mean absolute percentage error: ', mape(model, dataset))
 
 def get_args():
     parser = argparse.ArgumentParser(
