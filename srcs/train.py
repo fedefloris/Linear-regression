@@ -6,18 +6,18 @@ import matplotlib.pyplot as plt
 import argparse
 
 def plot(model, losses, dataset):
-    figure, (ax1, ax2) = plt.subplots(ncols=2, figsize=(10, 5))
-    # ax1.title('Linear Regression')
+    _, (ax1, ax2) = plt.subplots(ncols=2, figsize=(10, 5))
+    ax1.set_title('Predictions')
     ax1.plot(dataset.y, dataset.x, 'or')
     ax1.plot(model.predict(dataset.x), dataset.x, label='prediction')
-    # ax1.xlabel('km')
-    # ax1.ylabel('price')
-    # ax1.legend()
-    # ax2.title('Linear Regression')
-    ax2.plot(losses)
-    # ax2.xlabel('error')
-    # ax2.ylabel('epochs')
-    # ax2.legend()
+    ax1.set_xlabel('km')
+    ax1.set_ylabel('price')
+    ax1.legend()
+    ax2.plot(losses, label='loss')
+    ax2.set_title('Losses')
+    ax2.set_xlabel('error')
+    ax2.set_ylabel('epochs')
+    ax2.legend()
     plt.show()
 
 def loss(model, dataset):
