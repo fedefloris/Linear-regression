@@ -34,7 +34,8 @@ def train(args):
         optimizer.step(model)
     print ('Model:', model)
     print ('Loss:', loss(model, dataset))
-    plot(model, losses, dataset)
+    if args.plot:
+        plot(model, losses, dataset)
     return model
 
 def get_args():
@@ -50,6 +51,11 @@ def get_args():
         type=int,
         default=300,
         help='Number of epochs'
+    )
+    parser.add_argument(
+        '-plot',
+        action='store_true',
+        help='Plot the predictions and the losses after training'
     )
     parser.add_argument(
         '-model_parameters',
