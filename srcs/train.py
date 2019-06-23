@@ -1,5 +1,6 @@
 from dataset import Dataset
 from model import LinearRegression
+from loss import mse
 from optimizer import Optimizer
 
 import matplotlib.pyplot as plt
@@ -13,27 +14,23 @@ def plot(model, losses, dataset):
     ax1.set_xlabel('km')
     ax1.set_ylabel('price')
     ax1.legend()
-    ax2.plot(losses, label='loss')
-    ax2.set_title('Losses')
+    ax2.plot(losses, label='mse')
+    ax2.set_title('Loss')
     ax2.set_xlabel('error')
     ax2.set_ylabel('epochs')
     ax2.legend()
     plt.show()
 
-def loss(model, dataset):
-    error = (model.predict(dataset.x) - dataset.y) ** 2
-    return error.sum() / len(dataset.x)
-
 def train(args):
     dataset = Dataset(args.dataset)
-    model = LinearRegression(n_weights=1)
+    model = LinearRegression()
     optimizer = Optimizer(dataset)
     losses = []
     for _ in range(args.epochs):
-        losses.append(loss(model, dataset))
+        losses.append(mse(model, dataset))
         optimizer.step(model)
     print ('Model:', model)
-    print ('Loss:', loss(model, dataset))
+    print ('Loss:', mse(model, dataset))
     if args.plot:
         plot(model, losses, dataset)
     return model
