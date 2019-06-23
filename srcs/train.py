@@ -4,9 +4,6 @@ from optimizer import Optimizer
 
 import matplotlib.pyplot as plt
 import argparse
-import numpy as np
-
-np.set_printoptions(suppress=True)
 
 def plot(model, losses, dataset):
     figure, (ax1, ax2) = plt.subplots(ncols=2, figsize=(10, 5))
