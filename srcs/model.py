@@ -2,7 +2,7 @@ import numpy as np
 
 class LinearRegression():
 
-    def __init__(self, n_weights):
+    def __init__(self, n_weights=1):
         self.weights = np.zeros(n_weights)
         self.bias = 0
 

@@ -3,14 +3,13 @@ from model import LinearRegression
 
 import matplotlib.pyplot as plt
 import argparse
-import numpy as np
 
 def plot(model, dataset):
     pass
 
 def evaluate(args):
     dataset = Dataset(args.dataset)
-    model = LinearRegression(n_weights=1)
+    model = LinearRegression()
     model.load_parameters(args.model_parameters)
     print (model)
     plot(model, dataset)
