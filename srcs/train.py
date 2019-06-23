@@ -67,6 +67,7 @@ def get_args():
 def main():
     args = get_args()
     model = train(args)
+    print ('Saving parameters to', args.model_parameters)
     model.save_parameters(args.model_parameters)
 
 if __name__ == '__main__':
