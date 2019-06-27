@@ -40,7 +40,8 @@ def get_args():
         description='Train a linear regression model for car price prediction.'
     )
     parser.add_argument(
-        'dataset',
+        '-dataset',
+        default='data/cars.csv',
         help='CSV file containing car features (including the price)'
     )
     parser.add_argument(
