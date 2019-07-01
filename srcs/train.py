@@ -21,8 +21,7 @@ def plot(model, losses, dataset):
     ax2.legend()
     plt.show()
 
-def train(args):
-    dataset = Dataset(args.dataset)
+def train(dataset, args):
     model = LinearRegression()
     optimizer = Optimizer(dataset)
     losses = []
@@ -57,16 +56,17 @@ def get_args():
     )
     parser.add_argument(
         '-model_parameters',
-        default='parameters.npy',
+        default='parameters.json',
         help='File that will contain the trained parameters of the model'
     )
     return parser.parse_args()
 
 def main():
     args = get_args()
-    model = train(args)
+    dataset = Dataset(args.dataset)
+    model = train(dataset, args)
     print ('Saving parameters to', args.model_parameters)
-    model.save_parameters(args.model_parameters)
+    model.save_parameters(dataset, args.model_parameters)
 
 if __name__ == '__main__':
     main()

@@ -26,7 +26,7 @@ def get_args():
     )
     parser.add_argument(
         '-model_parameters',
-        default='parameters.npy',
+        default='parameters.json',
         help='File that contains the trained parameters of the model'
     )
     return parser.parse_args()

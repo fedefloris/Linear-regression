@@ -7,7 +7,7 @@ def predict(args):
     model = LinearRegression()
     model.load_parameters(args.model_parameters)
     km = float(input('Enter car\'s kilometers:'))
-    km = Dataset.preprocess([km])
+    km = Dataset.preprocess([km], model.x_max, model.x_min)
     print ('Predicted price:', model.predict(km))
 
 def get_args():
@@ -16,7 +16,7 @@ def get_args():
     )
     parser.add_argument(
         '-model_parameters',
-        default='parameters.npy',
+        default='parameters.json',
         help='File that contains the trained parameters of the model'
     )
     return parser.parse_args()
