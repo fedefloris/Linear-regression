@@ -16,8 +16,8 @@ def plot(model, losses, dataset):
     ax1.legend()
     ax2.plot(losses, label='mse')
     ax2.set_title('Loss')
-    ax2.set_xlabel('error')
-    ax2.set_ylabel('epochs')
+    ax2.set_xlabel('epochs')
+    ax2.set_ylabel('error')
     ax2.legend()
     plt.show()
 
