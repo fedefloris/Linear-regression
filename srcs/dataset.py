@@ -23,6 +23,8 @@ class Dataset:
                 self.y.append([float(row[-1])])
             self.x = np.array(self.x)
             self.y = np.array(self.y)
+            self.x_raw = self.x
+            self.y_raw = self.y
 
     def _preprocess(self):
         # min-max scaling

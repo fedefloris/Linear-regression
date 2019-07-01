@@ -9,8 +9,8 @@ import argparse
 def plot(model, losses, dataset):
     _, (ax1, ax2) = plt.subplots(ncols=2, figsize=(10, 5))
     ax1.set_title('Predictions')
-    ax1.plot(dataset.y, dataset.x, 'or')
-    ax1.plot(model.predict(dataset.x), dataset.x, label='prediction')
+    ax1.plot(dataset.x_raw, dataset.y_raw, 'or')
+    ax1.plot(dataset.x_raw, model.predict(dataset.x), label='prediction')
     ax1.set_xlabel('km')
     ax1.set_ylabel('price')
     ax1.legend()
