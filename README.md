@@ -3,7 +3,7 @@
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
 <p align="center">
-	<img src="https://github.com/fedefloris/Linear-regression/blob/master/images/preview.png">
+	<img width="750" src="https://github.com/fedefloris/Linear-regression/blob/master/images/preview.png">
 </p>
 
 ## Challenge
