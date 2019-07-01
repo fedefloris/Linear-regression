@@ -10,7 +10,7 @@ class Dataset:
         ):
         self._read_data_from_csv(file, delimiter)
         if preprocess:
-            self._preprocess()
+            self.x = Dataset.preprocess(self.x)
 
     def _read_data_from_csv(self, csv_file, delimiter):
         self.x, self.y = [], []
@@ -24,10 +24,10 @@ class Dataset:
             self.x = np.array(self.x)
             self.y = np.array(self.y)
             self.x_raw = self.x
-            self.y_raw = self.y
 
-    def _preprocess(self):
+    @staticmethod
+    def preprocess(inputs):
         # min-max scaling
-        x_min = np.amin(self.x, 0)
-        x_max = np.amax(self.x, 0)
-        self.x = (self.x - x_min) * (1 / (x_min - x_max))
+        inputs_min = np.amin(inputs, 0)
+        inputs_max = np.amax(inputs, 0)
+        return (inputs - inputs_min) * (1 / (inputs_min - inputs_max))

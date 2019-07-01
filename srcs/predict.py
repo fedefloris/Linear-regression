@@ -1,3 +1,4 @@
+from dataset import Dataset
 from model import LinearRegression
 
 import argparse
@@ -6,7 +7,8 @@ def predict(args):
     model = LinearRegression()
     model.load_parameters(args.model_parameters)
     km = float(input('Enter car\'s kilometers:'))
-    print ('Predicted price:', model.predict([km]))
+    km = Dataset.preprocess([km])
+    print ('Predicted price:', model.predict(km))
 
 def get_args():
     parser = argparse.ArgumentParser(

@@ -8,7 +8,7 @@ class Optimizer():
     def step(self, model, learning_rate=3e-1):
         bias = 0
         weights = np.zeros(model.weights.shape)
-        m = len(self.dataset.x)
+        m = len(self.dataset.y)
         errors = model.predict(self.dataset.x) - self.dataset.y
         bias = errors.sum() / m
         weights = (errors * self.dataset.x).sum() / m
