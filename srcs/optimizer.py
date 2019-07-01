@@ -9,9 +9,8 @@ class Optimizer():
         bias = 0
         weights = np.zeros(model.weights.shape)
         m = len(self.dataset.x)
-        for features, output in zip(self.dataset.x, self.dataset.y):
-            error = model.predict(features) - output
-            bias += error
-            weights += error * features
-        model.bias -= learning_rate * bias / m
-        model.weights -= learning_rate * weights / m
+        errors = model.predict(self.dataset.x) - self.dataset.y
+        bias = errors.sum() / m
+        weights = (errors * self.dataset.x).sum() / m
+        model.bias -= learning_rate * bias
+        model.weights -= learning_rate * weights
