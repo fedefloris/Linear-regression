@@ -7,8 +7,8 @@ class LinearRegression():
         self.bias = 0
 
     def load_parameters(self, file):
-        data = np.load(file)
-        if len(data.shape) == 2:
+        data = np.load(file, allow_pickle=True)
+        if len(data.shape) == 1:
             self.weights = data[0]
             self.bias = data[1]
 
