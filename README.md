@@ -17,7 +17,17 @@ pip install -r requirements.txt
 ```
 
 ## Using the project
+```console
+python srcs/train.py -plot
+```
 
+```console
+python srcs/evaluate.py
+```
+
+```console
+python srcs/predict.py
+```
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
