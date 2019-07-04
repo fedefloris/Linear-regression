@@ -17,14 +17,15 @@ pip install -r requirements.txt
 ```
 
 ## Using the project
+#### Train the model and plot the results
 ```console
 python srcs/train.py -plot
 ```
-
+#### Evaluate the trained model
 ```console
 python srcs/evaluate.py
 ```
-
+#### Predict
 ```console
 python srcs/predict.py
 ```
