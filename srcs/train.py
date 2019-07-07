@@ -34,6 +34,12 @@ def train(dataset, args):
         plot(model, losses, dataset)
     return model
 
+def positive_int(value):
+    int_value = int(value)
+    if int_value <= 0:
+        raise argparse.ArgumentTypeError("%s is an invalid positive int value" % value)
+    return int_value
+
 def get_args():
     parser = argparse.ArgumentParser(
         description='Train a linear regression model for car price prediction.'
@@ -45,7 +51,7 @@ def get_args():
     )
     parser.add_argument(
         '-epochs',
-        type=int,
+        type=positive_int,
         default=300,
         help='Number of epochs'
     )
