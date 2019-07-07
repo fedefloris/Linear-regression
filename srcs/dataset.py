@@ -22,7 +22,12 @@ class Dataset:
         with open(csv_file) as file:
             reader = csv.reader(file, delimiter=delimiter)
             # Skip first row of columns
-            next(reader, None)
+            labels = next(reader, None)
+            if labels:
+                self.x_label = labels[:-1]
+                self.y_label = labels[1]
+            else:
+                self.x_label, self.y_label = '',''
             for row in reader:
                 self.x.append(list(map(float, row[:-1])))
                 self.y.append([float(row[-1])])
