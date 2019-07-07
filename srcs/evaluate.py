@@ -8,6 +8,7 @@ import argparse
 def evaluate(args):
     dataset = Dataset(args.dataset)
     model = LinearRegression()
+    print ('Loading parameters from', args.model_parameters)
     model.load_parameters(args.model_parameters)
     print ('Model:', model)
     print ('Mean square error:', mse(model, dataset))

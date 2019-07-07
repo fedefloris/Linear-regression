@@ -5,6 +5,7 @@ import argparse
 
 def predict(args):
     model = LinearRegression()
+    print ('Loading parameters from', args.model_parameters)
     model.load_parameters(args.model_parameters)
     km = float(input('Enter car\'s kilometers:'))
     km = Dataset.preprocess([km], model.x_max, model.x_min)
