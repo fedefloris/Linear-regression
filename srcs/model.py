@@ -4,7 +4,7 @@ import json
 class LinearRegression():
 
     def __init__(self, n_weights=1):
-        self.weights = np.zeros(n_weights)
+        self.weights = np.zeros((n_weights, 1))
         self.bias = 0
 
     def load_parameters(self, path):
@@ -28,7 +28,11 @@ class LinearRegression():
             json.dump(data, file, indent=4)
 
     def predict(self, inputs):
-        return self.weights * inputs + self.bias
+        print (self.weights, self.weights.shape)
+        print (inputs, inputs.shape)
+        predictions = np.dot(inputs, self.weights) + self.bias
+        print (predictions, predictions.shape)
+        return predictions
 
     def __str__(self):
         output = 'Weights = ' +  str(self.weights) + ', '

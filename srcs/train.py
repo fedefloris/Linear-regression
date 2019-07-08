@@ -1,9 +1,10 @@
-from dataset import Dataset
 from model import LinearRegression
-from loss import mse
 from optimizer import Optimizer
+from dataset import Dataset
+from loss import mse
 
 import matplotlib.pyplot as plt
+import numpy as np
 import argparse
 
 def plot(model, losses, dataset):
@@ -22,7 +23,8 @@ def plot(model, losses, dataset):
     plt.show()
 
 def train(dataset, args):
-    model = LinearRegression()
+    n_weights = np.size(dataset.x, 1)
+    model = LinearRegression(n_weights=n_weights)
     optimizer = Optimizer(dataset)
     losses = []
     for _ in range(args.epochs):
@@ -30,7 +32,7 @@ def train(dataset, args):
         optimizer.step(model)
     print ('Model:', model)
     print ('Loss:', mse(model, dataset))
-    if args.plot:
+    if args.plot and n_weights == 1:
         plot(model, losses, dataset)
     return model
 
