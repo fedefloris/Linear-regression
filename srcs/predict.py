@@ -5,9 +5,9 @@ import argparse
 
 def predict(args):
     model = LinearRegression()
-    print ('Loading parameters from', args.model_parameters)
+    print ('Loading parameters from', args.model_parameters, '\n')
     model.load_parameters(args.model_parameters)
-    print ('Model:', model)
+    print ('Model:', model, '\n')
     km = float(input('Enter car\'s kilometers:'))
     km = Dataset.preprocess([km], model.x_max, model.x_min)
     print ('Predicted price:', model.predict(km))

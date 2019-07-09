@@ -34,8 +34,8 @@ def train(dataset, args):
     losses = []
     for _ in range(args.epochs):
         losses.append(mse(model, dataset))
-        optimizer.step(model)
-    print ('Model:', model)
+        optimizer.step(model, args.learning_rate)
+    print ('Model:', model, '\n')
     print ('Loss:', mse(model, dataset))
     sklearn_model = SklearnLinearRegression().fit(dataset.x, dataset.y)
     print ('Loss with sklearn:', mean_squared_error(dataset.y, sklearn_model.predict(dataset.x)), '\n')
@@ -43,26 +43,23 @@ def train(dataset, args):
         plot(model, n_weights, losses, dataset)
     return model
 
-def positive_int(value):
-    int_value = int(value)
-    if int_value <= 0:
-        raise argparse.ArgumentTypeError("%s is an invalid positive int value" % value)
-    return int_value
-
 def get_args():
     parser = argparse.ArgumentParser(
-        description='Train a linear regression model for car price prediction.'
+        description='Train a linear regression model.'
     )
     parser.add_argument(
         '-dataset',
-        default='data/cars.csv',
-        help='CSV file containing car features (including the price)'
+        default='data/cars.csv'
     )
     parser.add_argument(
         '-epochs',
-        type=positive_int,
-        default=300,
-        help='Number of epochs'
+        type=int,
+        default=350
+    )
+    parser.add_argument(
+        '-learning_rate',
+        type=float,
+        default=1.3
     )
     parser.add_argument(
         '-plot',
