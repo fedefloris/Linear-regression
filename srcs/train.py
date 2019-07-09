@@ -7,14 +7,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 import argparse
 
-def plot(model, losses, dataset):
-    _, (ax1, ax2) = plt.subplots(ncols=2, figsize=(10, 5))
-    ax1.set_title('Predictions')
-    ax1.plot(dataset.x_raw, dataset.y, 'or')
-    ax1.plot(dataset.x_raw, model.predict(dataset.x), label='prediction')
-    ax1.set_xlabel(dataset.x_label[0])
-    ax1.set_ylabel(dataset.y_label)
-    ax1.legend()
+def plot(model, n_weights, losses, dataset):
+    if n_weights == 1:
+        _, (ax1, ax2) = plt.subplots(ncols=2, figsize=(10, 5))
+        ax1.set_title('Predictions')
+        ax1.plot(dataset.x_raw, dataset.y, 'or')
+        ax1.plot(dataset.x_raw, model.predict(dataset.x), label='prediction')
+        ax1.set_xlabel(dataset.x_label[0])
+        ax1.set_ylabel(dataset.y_label)
+        ax1.legend()
+    else:
+        _, ax2 = plt.subplots(ncols=1, figsize=(10, 5))
     ax2.plot(losses, label='mse')
     ax2.set_title('Loss')
     ax2.set_xlabel('epochs')
@@ -32,8 +35,8 @@ def train(dataset, args):
         optimizer.step(model)
     print ('Model:', model)
     print ('Loss:', mse(model, dataset))
-    if args.plot and n_weights == 1:
-        plot(model, losses, dataset)
+    if args.plot:
+        plot(model, n_weights, losses, dataset)
     return model
 
 def positive_int(value):
