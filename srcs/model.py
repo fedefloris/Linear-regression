@@ -28,10 +28,7 @@ class LinearRegression():
             json.dump(data, file, indent=4)
 
     def predict(self, inputs):
-        print (self.weights, self.weights.shape)
-        print (inputs, inputs.shape)
         predictions = np.dot(inputs, self.weights) + self.bias
-        print (predictions, predictions.shape)
         return predictions
 
     def __str__(self):
