@@ -32,6 +32,6 @@ class LinearRegression():
         return predictions
 
     def __str__(self):
-        output = 'Weights = ' +  str(self.weights) + ', '
+        output = 'Weights = ' +  str(self.weights.flatten()) + ', '
         output += 'Bias = ' + str(self.bias)
         return output
