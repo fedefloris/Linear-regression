@@ -9,6 +9,6 @@ class Optimizer():
         m = len(self.dataset.y)
         errors = model.predict(self.dataset.x) - self.dataset.y
         bias = errors.sum() / m
-        weights = (errors * self.dataset.x).sum() / m
+        weights = np.dot(self.dataset.x.T, errors) / m
         model.bias -= learning_rate * bias
         model.weights -= learning_rate * weights
