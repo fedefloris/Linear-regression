@@ -3,6 +3,8 @@ from optimizer import Optimizer
 from dataset import Dataset
 from loss import mse
 
+from sklearn.linear_model import LinearRegression as SklearnLinearRegression
+from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 import numpy as np
 import argparse
@@ -35,6 +37,8 @@ def train(dataset, args):
         optimizer.step(model)
     print ('Model:', model)
     print ('Loss:', mse(model, dataset))
+    sklearn_model = SklearnLinearRegression().fit(dataset.x, dataset.y)
+    print ('Loss with sklearn:', mean_squared_error(dataset.y, sklearn_model.predict(dataset.x)), '\n')
     if args.plot:
         plot(model, n_weights, losses, dataset)
     return model

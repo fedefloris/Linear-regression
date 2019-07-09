@@ -2,28 +2,42 @@ from dataset import Dataset
 from model import LinearRegression
 from loss import mse, mae, mpe, mape
 
+from sklearn.linear_model import LinearRegression as SklearnLinearRegression
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 import matplotlib.pyplot as plt
 import argparse
+
+def display_sklearn_metrics(dataset):
+    model = SklearnLinearRegression().fit(dataset.x, dataset.y)
+    print ('--- Slkearn model\'s metrics ---')
+    print ('Weights =', model.coef_.flatten(), 'Bias =', model.intercept_[0])
+    print ('Mean square error:', mean_squared_error(dataset.y, model.predict(dataset.x)))
+    print ('Mean absolute error:', mean_absolute_error(dataset.y, model.predict(dataset.x)))
+
+
+def display_model_metrics(model, dataset):
+    print ('--- Model\'s metrics ---')
+    print (model)
+    print ('Mean square error:', mse(model, dataset))
+    print ('Mean absolute error:', mae(model, dataset))
+    print ('Mean percentage error: ', mpe(model, dataset))
+    print ('Mean absolute percentage error: ', mape(model, dataset), '\n')
 
 def evaluate(args):
     dataset = Dataset(args.dataset)
     model = LinearRegression()
-    print ('Loading parameters from', args.model_parameters)
+    print ('Loading parameters from', args.model_parameters, '\n')
     model.load_parameters(args.model_parameters)
-    print ('Model:', model)
-    print ('Mean square error:', mse(model, dataset))
-    print ('Mean absolute error:', mae(model, dataset))
-    print ('Mean percentage error: ', mpe(model, dataset))
-    print ('Mean absolute percentage error: ', mape(model, dataset))
+    display_model_metrics(model, dataset)
+    display_sklearn_metrics(dataset)
 
 def get_args():
     parser = argparse.ArgumentParser(
-        description='Evaluate a linear regression model for car price prediction.'
+        description='Evaluate a linear regression model.'
     )
     parser.add_argument(
         '-dataset',
-        default='data/cars.csv',
-        help='CSV file containing car features (including the price)'
+        default='data/cars.csv'
     )
     parser.add_argument(
         '-model_parameters',
