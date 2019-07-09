@@ -7,7 +7,7 @@
 </p>
 
 ## Challenge
-A simple [linear regression](https://en.wikipedia.org/wiki/Linear_regression) model that predicts cars prices.
+A simple [linear regression](https://en.wikipedia.org/wiki/Linear_regression) model.
 
 By default, the program reads [data/cars.csv](data/cars.csv), a tiny dataset that contains kilometers-prices pairs.
 
