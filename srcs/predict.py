@@ -1,6 +1,7 @@
 from dataset import Dataset
 from model import LinearRegression
 
+import numpy as np
 import argparse
 
 def predict(args):
@@ -8,13 +9,15 @@ def predict(args):
     print ('Loading parameters from', args.model_parameters, '\n')
     model.load_parameters(args.model_parameters)
     print ('Model:', model, '\n')
-    km = float(input('Enter car\'s kilometers:'))
-    km = Dataset.preprocess([km], model.x_max, model.x_min)
-    print ('Predicted price:', model.predict(km))
+    x = []
+    for index in range(len(model.weights)):
+        x.append(float(input(f'Enter feature n.{index + 1}: ')))
+    x = Dataset.preprocess(x, model.x_max, model.x_min)
+    print ('Predicted value:', model.predict(x))
 
 def get_args():
     parser = argparse.ArgumentParser(
-        description='Predict the price of a car with a linear regression model.'
+        description='Run predictions with a trained model.'
     )
     parser.add_argument(
         '-model_parameters',
