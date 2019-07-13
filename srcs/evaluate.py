@@ -9,7 +9,7 @@ import argparse
 
 def display_sklearn_metrics(dataset):
     model = SklearnLinearRegression().fit(dataset.x, dataset.y)
-    print ('--- Slkearn model\'s metrics ---')
+    print ('--- Sklearn model\'s metrics ---')
     print ('Weights =', model.coef_.flatten(), 'Bias =', model.intercept_[0])
     print ('Mean square error:', mean_squared_error(dataset.y, model.predict(dataset.x)))
     print ('Mean absolute error:', mean_absolute_error(dataset.y, model.predict(dataset.x)))
