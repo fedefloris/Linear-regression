@@ -9,7 +9,7 @@
 ## Challenge
 A multiple [linear regression](https://en.wikipedia.org/wiki/Linear_regression) model trained with [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent) algorithm.
 
-The code supports multiple independent variables (but not categorical, only numbers).
+The code supports multiple independent variables (but not categories, only numbers).
 
 It can read a dataset as a [csv](https://en.wikipedia.org/wiki/Comma-separated_values) file.
 
