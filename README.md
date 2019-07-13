@@ -10,17 +10,8 @@
 A multiple [linear regression](https://en.wikipedia.org/wiki/Linear_regression) model trained with [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent) algorithm.
 
 The code supports multiple independent variables (but not categorical, only numbers).
-It can read a dataset with the following format:
 
-<b>N</b> = number of training examples
-
-| Column 1 | Column 2 | Column 3 |
-| :--: | :--: | :--: |
-| x<sub>1,1</sub> | x<sub>1,2</sub> |  y<sub>1</sub> |
-| x<sub>2,1</sub> | x<sub>2,2</sub> |  y<sub>2</sub> |
-| x<sub>3,1</sub> | x<sub>3,2</sub> |  y<sub>3</sub> |
-| ... | ... | ... |
-| x<sub><b>N</b>,1</sub> | x<sub><b>N</b>,2</sub> |  y<sub><b>N</b></sub> |
+It can read a dataset as a [csv](https://www.wikiwand.com/en/Comma-separated_values) file.
 
 Example with [data/cars.csv](data/cars.csv), a tiny dataset that contains kilometers-prices pairs.
 ```console
