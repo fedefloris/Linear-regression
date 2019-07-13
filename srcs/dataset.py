@@ -28,7 +28,7 @@ class Dataset:
     def _set_labels(self, labels):
         if labels:
             self.x_label = labels[:-1]
-            self.y_label = labels[1]
+            self.y_label = labels[-1]
         else:
             self.x_label, self.y_label = '',''
 
