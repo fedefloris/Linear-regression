@@ -11,7 +11,7 @@ A multiple [linear regression](https://en.wikipedia.org/wiki/Linear_regression) 
 
 The code supports multiple independent variables (but not categorical, only numbers).
 
-It can read a dataset as a [csv](https://www.wikiwand.com/en/Comma-separated_values) file.
+It can read a dataset as a [csv](https://en.wikipedia.org/wiki/Comma-separated_values) file.
 
 Example with [data/cars.csv](data/cars.csv), a tiny dataset that contains kilometers-prices pairs.
 ```console
