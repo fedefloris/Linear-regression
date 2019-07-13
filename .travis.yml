@@ -5,4 +5,4 @@ python:
   
 script:
   - python srcs/train.py data/cars.csv
-  - python srcs/evaluate.py data/cars.sv
+  - python srcs/evaluate.py data/cars.csv
