@@ -30,11 +30,11 @@ pip install -r requirements.txt
 ## Using the project
 #### Train the model and plot the results
 ```console
-python srcs/train.py -plot
+python srcs/train.py data/cars.csv -plot
 ```
 #### Evaluate the trained model
 ```console
-python srcs/evaluate.py
+python srcs/evaluate.py data/cars.csv
 ```
 #### Predict
 ```console
