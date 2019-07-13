@@ -23,8 +23,7 @@ class Dataset:
             reader = csv.reader(file, delimiter=delimiter)
             self._set_labels(next(reader, None))
             for row in reader:
-                self.x.append(list(map(float, row[:-1])))
-                self.y.append([float(row[-1])])
+                self._read_row(row)
 
     def _set_labels(self, labels):
         if labels:
@@ -32,6 +31,16 @@ class Dataset:
             self.y_label = labels[1]
         else:
             self.x_label, self.y_label = '',''
+
+    def _read_row(self, row):
+        line = []
+        for x in row[:-1]:
+            try:
+                line.append(float(x))
+            except ValueError:
+                print (f'Categorical features are not supported. Skipping {x}')
+        self.x.append(line)
+        self.y.append([float(row[-1])])
 
     def _configure(self):
         self.x = np.array(self.x)
