@@ -38,7 +38,7 @@ python srcs/train.py data/cars.csv -plot
 ```console
 python srcs/evaluate.py data/cars.csv
 ```
-Nota bene: for model evaluation you should use a validation dataset and not the same training dataset. More details [here](https://en.wikipedia.org/wiki/Training,_validation,_and_test_sets).
+Nota bene: for model evaluation you should use a validation dataset and not the same training set. More details [here](https://en.wikipedia.org/wiki/Training,_validation,_and_test_sets).
 
 #### Predict
 ```console
