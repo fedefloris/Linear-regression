@@ -4,5 +4,5 @@ python:
   - "3.6"
   
 script:
-  - python srcs/train.py
-  - python srcs/evaluate.py 
+  - python srcs/train.py data/cars.csv
+  - python srcs/evaluate.py data/cars.sv
