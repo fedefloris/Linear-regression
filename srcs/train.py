@@ -49,8 +49,8 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
-        '-dataset',
-        default='data/cars.csv'
+        'dataset',
+        help='Dataset with each sample separated by a new line and each variable separated by a comma'
     )
     parser.add_argument(
         '-epochs',
