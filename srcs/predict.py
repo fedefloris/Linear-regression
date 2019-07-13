@@ -17,7 +17,8 @@ def predict(args):
 
 def get_args():
     parser = argparse.ArgumentParser(
-        description='Run predictions with a trained model.'
+        description='Run predictions with a trained model.',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
         '-model_parameters',

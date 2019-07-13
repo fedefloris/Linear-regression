@@ -33,7 +33,8 @@ def evaluate(args):
 
 def get_args():
     parser = argparse.ArgumentParser(
-        description='Evaluate a linear regression model.'
+        description='Evaluate a linear regression model.',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
         '-dataset',

@@ -45,7 +45,8 @@ def train(dataset, args):
 
 def get_args():
     parser = argparse.ArgumentParser(
-        description='Train a linear regression model.'
+        description='Train a linear regression model.',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
         '-dataset',
