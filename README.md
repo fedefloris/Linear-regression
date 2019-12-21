@@ -13,7 +13,7 @@ The code supports multiple independent variables (but not categorical data, only
 
 It can read a dataset as a [csv](https://en.wikipedia.org/wiki/Comma-separated_values) file.
 
-Example with [data/cars.csv](data/cars.csv), a tiny dataset that contains kilometers-prices pairs.
+Example with [data/cars.csv](data/cars.csv), a tiny dataset that contains kilometers-price pairs.
 ```console
 $> head -n 4 data/cars.csv
 km,price
