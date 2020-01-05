@@ -6,5 +6,5 @@ python:
 script:
   - python srcs/train.py data/cars.csv
   - python srcs/evaluate.py data/cars.csv
-  - python srcs/train.py data/houses.csv
+  - python srcs/train.py data/houses.csv -epochs 10000 -learning_rate 0.5
   - python srcs/evaluate.py data/houses.csv
