@@ -11,9 +11,9 @@ A multiple [linear regression](https://en.wikipedia.org/wiki/Linear_regression) 
 
 The code supports multiple independent variables (but not categorical data, only numbers).
 
-It can read a dataset as a [csv](https://en.wikipedia.org/wiki/Comma-separated_values) file.
+It can read the dataset as a [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) file.
 
-Example with [data/cars.csv](data/cars.csv), a tiny dataset that contains kilometers-price pairs.
+An example with [data/cars.csv](data/cars.csv), a tiny dataset that contains kilometre-price pairs.
 ```console
 $> head -n 4 data/cars.csv
 km,price
@@ -22,7 +22,7 @@ km,price
 150500,4400
 ```
 
-For more details look at the [subject](subject.pdf).
+For more details, look at the [subject](subject.pdf).
 
 ## Install dependencies
 ```console
@@ -38,7 +38,7 @@ python srcs/train.py data/cars.csv -plot
 ```console
 python srcs/evaluate.py data/cars.csv
 ```
-Nota bene: for model evaluation you should use a validation dataset and not the same training set. More details [here](https://en.wikipedia.org/wiki/Training,_validation,_and_test_sets).
+Nota bene: you should use a validation dataset and not the same training set. More details [here](https://en.wikipedia.org/wiki/Training,_validation,_and_test_sets).
 
 #### Predict
 ```console
